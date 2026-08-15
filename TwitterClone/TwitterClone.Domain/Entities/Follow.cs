@@ -1,25 +1,18 @@
 namespace TwitterClone.Domain.Entities;
 
-public class Follow
+public class Follow:BaseEntity
 {
-    public Guid Id { get; private set; }
+    public Guid FollowerId { get; set; }
+    public Guid FollowingId { get; set; }
 
-    public Guid FollowerId { get; private set; }
-    public Guid FolloweeId { get; private set; }
-
-    public DateTime CreatedAt { get; private set; }
-
-    private Follow()
+    public Follow():base(Guid.NewGuid())
     {
     }
-
-    public Follow(Guid followerId, Guid followeeId)
+    
+    public override string DescribeRecord()
     {
-        Id = Guid.NewGuid();
-
-        FollowerId = followerId;
-        FolloweeId = followeeId;
-
-        CreatedAt = DateTime.UtcNow;
+        var baseRecord = base.DescribeRecord();
+        return $"{baseRecord}, FollowerId: {FollowerId}, FollowingId: {FollowingId}";
     }
+    
 }

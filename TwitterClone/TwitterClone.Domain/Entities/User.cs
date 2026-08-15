@@ -1,44 +1,22 @@
 namespace TwitterClone.Domain.Entities;
 
-public class User
+public class User : BaseEntity
 {
-    public Guid Id { get; private set; }
-    public string FirstName { get; private set; }
-    public string LastName { get; private set; }
-    public string Email { get; private set; }
-    public string PhoneNumber { get; private set; }
-    public string? ProfileImageUrl { get; private set; }
-    public string? PasswordHash { get; private set; }
-    public bool IsVerified { get; private set; }
-    public DateTime JoinedAt { get; private set; }
-
-    private User()
+    public string FirstName { get;  set; }
+    public string LastName { get;  set; }
+    public string Email { get;  set; }
+    public string PhoneNumber { get;  set; }
+    public string? ProfileImageUrl { get;  set; }
+    public string? PasswordHash { get;  set; }
+    public bool IsVerified { get;  set; }
+    
+    public User():base(Guid.NewGuid())
     {
-    }
-
-    public User(
-        string firstName,
-        string lastName,
-        string email,
-        string phoneNumber,
-        string? profileImageUrl = null,
-        string? passwordHash = null)
-    {
-        Id = Guid.NewGuid();
-
-        FirstName = firstName;
-        LastName = lastName;
-        Email = email;
-        PhoneNumber = phoneNumber;
-        ProfileImageUrl = profileImageUrl;
-        PasswordHash = passwordHash;
-
-        IsVerified = false;
-        JoinedAt = DateTime.UtcNow;
     }
     
-    public void Verify()
+    public override string DescribeRecord()
     {
-        IsVerified = true;
+        var baseRecord = base.DescribeRecord();
+        return $"{baseRecord}, FirstName: {FirstName}, LastName: {LastName}, Email: {Email}, PhoneNumber: {PhoneNumber}, ProfileImageUrl: {ProfileImageUrl}, isVerified: {IsVerified}";
     }
-}
+} 
