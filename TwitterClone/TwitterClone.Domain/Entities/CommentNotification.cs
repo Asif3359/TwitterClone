@@ -24,6 +24,6 @@ public class CommentNotification:Notification
     
     public override string GetMessage()
     {
-        return $"User with ID {CommentByUserId} commented on your post.";
+        return $"User with ID {CommentByUserId} Message to you:{Message}";
     }
 }

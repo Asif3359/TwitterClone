@@ -15,7 +15,7 @@ public sealed class LikeNotification:Notification
     }
     public override string GetMessage()
     {
-        return $"User ID {LikeByUserId} liked in your post.";
+        return $"User ID {LikeByUserId} {Message} in your post.";
     }
     
 }

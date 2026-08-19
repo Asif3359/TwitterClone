@@ -18,7 +18,7 @@ public sealed class SystemNotification:Notification
     
     public override string GetMessage()
     {
-        return $"System Notification: Unknown Error";
+        return $"{Message}";
     }
     
 }
